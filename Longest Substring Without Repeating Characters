@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        
+        //Linear iteration
+        //Keep track of which characters has been passed so far
+        //Current index and Start Index
+        //When a character which is a duplicate is hit, jump to the index after the first time the char appeared
+        
+        unordered_map<char, int> map;
+        
+        int start = 0;
+        int cur = 0;
+        int length = s.size();
+        
+        while(cur<length)
+        {
+            //Check entry in map
+            
+            
+            //dupe found
+            if()
+            {
+                //Check length
+                //Reset start and cur
+                //clear map
+            }
+        }
+                
+    }
+};
