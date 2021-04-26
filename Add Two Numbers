@@ -1,0 +1,84 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+                
+        ListNode* answer = new ListNode(0);
+        ListNode* answerCurrent = answer;
+        
+        bool l1Done = false;
+        bool l2Done = false;
+        
+        ListNode* l1Current = l1;
+        ListNode* l2Current = l2;
+        
+       
+        int val, carryOver = 0;
+        
+        while(!l1Done || !l2Done)
+        {
+            //check if done and add based on that
+            if(l1Current==nullptr)
+            {
+                l1Done = true;
+            }
+            if(l2Current==nullptr)
+            {
+                l2Done = true;
+            }
+            
+            if(l1Done)
+            {
+                if(l2Done)
+                {
+                    val = carryOver;
+                }
+                else
+                {
+                    val = l2Current->val + carryOver;
+                }
+            }
+            else if(l2Done)
+            {
+                val = l1Current->val + carryOver;
+            }
+            else
+            {
+                val = l1Current->val + l2Current->val + carryOver;    
+            }
+            carryOver = 0;
+            
+            //add new val to list
+            if(val>=10)
+            {
+                carryOver = 1;
+                val = val-10;
+            }
+        
+            if(!(l1Done && l2Done && val ==0))
+            {
+                answerCurrent->next = new ListNode(val);
+                answerCurrent = answerCurrent->next;
+            }
+
+            
+            if(l1Current!=nullptr)
+            {
+                l1Current = l1Current->next;
+            }
+            if(l2Current!=nullptr)
+            {
+                l2Current = l2Current->next;
+            }
+        }
+        
+        return answer->next;
+    }
+};
