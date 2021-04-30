@@ -1,0 +1,194 @@
+class Solution {
+public:
+    vector<string> letterCombinations(string digits) {
+        
+        if(digits.size()==0)//empty case
+        {
+            return vector<string>();
+        }
+        else if(digits.size()==1)
+        {
+            char lastDigit = digits[0];
+            vector<string> solution;
+            if(lastDigit == '2')
+            {
+                solution.push_back("a");
+                solution.push_back("b");
+                solution.push_back("c");
+            }
+            else if(lastDigit == '3')
+            {
+                solution.push_back("d");
+                solution.push_back("e");
+                solution.push_back("f");
+            }
+            else if(lastDigit == '4')
+            {
+                solution.push_back("g");
+                solution.push_back("h");
+                solution.push_back("i");
+            }
+            else if(lastDigit == '5')
+            {
+                solution.push_back("j");
+                solution.push_back("k");
+                solution.push_back("l");
+            }
+            else if(lastDigit == '6')
+            {
+                solution.push_back("m");
+                solution.push_back("n");
+                solution.push_back("o");
+            }
+            else if(lastDigit == '7')
+            {
+                solution.push_back("p");
+                solution.push_back("q");
+                solution.push_back("r");
+                solution.push_back("s");
+            }
+            else if(lastDigit == '8')
+            {
+                solution.push_back("t");
+                solution.push_back("u");
+                solution.push_back("v");
+            }
+            else if(lastDigit == '9')
+            {
+                solution.push_back("w");
+                solution.push_back("x");
+                solution.push_back("y");
+                solution.push_back("z");
+            }
+            
+            return solution;
+        }
+        else
+        {
+            //take 1 number off the end
+            char lastDigit = digits[digits.size()-1];
+            string frontDigits = digits;
+            frontDigits.pop_back();
+            
+            //get all solutions - that number
+            vector<string> subStrings = letterCombinations(frontDigits);
+            
+            //add number to end and put in solution vector
+            vector<string> solution;
+
+            int length = subStrings.size();
+            
+            if(lastDigit == '2')
+            {
+                for(int i=0; i<length; i++)
+                {  
+                    string sub1 = subStrings[i]+"a";
+                    string sub2 = subStrings[i]+"b";
+                    string sub3 = subStrings[i]+"c";
+                    
+                    solution.push_back(sub1);
+                    solution.push_back(sub2);
+                    solution.push_back(sub3);
+                }
+            }
+            else if(lastDigit == '3')
+            {                                   
+                for(int i=0; i<length; i++)
+                {  
+                    string sub1 = subStrings[i]+"d";
+                    string sub2 = subStrings[i]+"e";
+                    string sub3 = subStrings[i]+"f";
+                    
+                    solution.push_back(sub1);
+                    solution.push_back(sub2);
+                    solution.push_back(sub3);
+                }
+            }
+            else if(lastDigit == '4')
+            {                                    
+                for(int i=0; i<length; i++)
+                {  
+                    string sub1 = subStrings[i]+"g";
+                    string sub2 = subStrings[i]+"h";
+                    string sub3 = subStrings[i]+"i";
+                    
+                    solution.push_back(sub1);
+                    solution.push_back(sub2);
+                    solution.push_back(sub3);
+                }
+            }
+            else if(lastDigit == '5')
+            {                                    
+                for(int i=0; i<length; i++)
+                {  
+                    string sub1 = subStrings[i]+"j";
+                    string sub2 = subStrings[i]+"k";
+                    string sub3 = subStrings[i]+"l";
+                    
+                    solution.push_back(sub1);
+                    solution.push_back(sub2);
+                    solution.push_back(sub3);
+                }
+            }
+            else if(lastDigit == '6')
+            {                 
+                for(int i=0; i<length; i++)
+                {  
+                    string sub1 = subStrings[i]+"m";
+                    string sub2 = subStrings[i]+"n";
+                    string sub3 = subStrings[i]+"o";
+                    
+                    solution.push_back(sub1);
+                    solution.push_back(sub2);
+                    solution.push_back(sub3);
+                }
+            }
+            else if(lastDigit == '7')
+            {              
+                for(int i=0; i<length; i++)
+                {
+                    string sub1 = subStrings[i]+"p";
+                    string sub2 = subStrings[i]+"q";
+                    string sub3 = subStrings[i]+"r";
+                    string sub4 = subStrings[i]+"s";
+                
+                    solution.push_back(sub1);
+                    solution.push_back(sub2);
+                    solution.push_back(sub3);
+                    solution.push_back(sub4);   
+                }
+
+            }
+            else if(lastDigit == '8')
+            {                   
+                for(int i=0; i<length; i++)
+                {  
+                    string sub1 = subStrings[i]+"t";
+                    string sub2 = subStrings[i]+"u";
+                    string sub3 = subStrings[i]+"v";
+                    
+                    solution.push_back(sub1);
+                    solution.push_back(sub2);
+                    solution.push_back(sub3);
+                }
+            }
+            else if(lastDigit == '9')
+            {                  
+                for(int i=0; i<length; i++)
+                {
+                    string sub1 = subStrings[i]+"w";
+                    string sub2 = subStrings[i]+"x";
+                    string sub3 = subStrings[i]+"y";
+                    string sub4 = subStrings[i]+"z";
+                
+                    solution.push_back(sub1);
+                    solution.push_back(sub2);
+                    solution.push_back(sub3);
+                    solution.push_back(sub4);   
+                }
+            }
+            
+            return solution;
+        }
+    }
+};
