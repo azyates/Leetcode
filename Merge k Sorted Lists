@@ -1,0 +1,71 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+
+        int arrLen = lists.size();
+        if(arrLen == 0)
+        {
+            return nullptr;
+        }
+        
+        //initialize head with dummy node
+        ListNode* head = new ListNode();
+        ListNode* cur = head;
+        
+        //merge lists onto head list
+        
+        bool isFinished = false;
+        int lowVal;
+        int lowI;
+        while(!isFinished)
+        {
+            isFinished = true;
+            lowVal = std::numeric_limits<int>::max();
+            lowI = 0; //this is wrong but it shouldnt matter
+
+            //find lowest val
+            for(int i=0; i<arrLen; i++)
+            {
+                //make sure its not null
+                if(lists[i]!=nullptr)
+                {   
+                    //compare to current lowest val
+                    if(lists[i]->val < lowVal)
+                    {
+                        isFinished = false;
+                        lowVal = lists[i]->val;
+                        lowI = i;
+                    }
+                }
+            }
+            
+            //found one?
+            if(!isFinished)
+            {
+                //add lowest val to merged list and update pointers
+                cur->next = lists[lowI];
+                lists[lowI] = lists[lowI]->next;
+                cur = cur->next;
+                cur->next = nullptr;
+            }
+
+        }
+        
+        //remove dummy head
+        ListNode* mergedList = head->next; //might be nullptr but thats fine
+        delete head;
+        
+        return mergedList;
+        
+    }
+};
