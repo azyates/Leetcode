@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+                
+        int size = nums.size();
+        int answer = 0;
+        if(size>0)
+        {
+            int reducedIndex = 1;
+            int prevNumber = nums[0];
+    
+            //Skip first value
+            for(int i=1; i<size; i++)
+            {
+                //check if its a dupe
+                if(nums[i] != prevNumber)
+                {
+                    //not a dupe, put it in next index slot and update checkers
+                    nums[reducedIndex] = nums[i];
+                    reducedIndex++;
+                    prevNumber = nums[i];
+                }
+            }
+            
+            answer = reducedIndex;
+        }
+
+        
+        
+        return answer;
+    }
+};
